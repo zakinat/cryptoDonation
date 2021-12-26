@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\zaki\\def_crypto\\donation\\contracts\\Donation.sol": {
-      "lastModificationDate": 1640545473611,
-      "contentHash": "d301e45794d60e06d588ac6d6fb66ffe",
+      "lastModificationDate": 1640548419341,
+      "contentHash": "c8b312148dc154a28143ecc7755e97eb",
       "sourceName": "contracts/Donation.sol",
       "solcConfig": {
         "version": "0.8.10",

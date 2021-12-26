@@ -5,11 +5,16 @@ contract Donation {
 
   address payable public owner;
   address[] public donators;
-  //save the amount of every donation to the address of the sender
+  //save the amount of every donation to the appropriate address of the sender
   struct DonaterInf{
     uint amount;
   }
   mapping (address => DonaterInf ) public donationForAddress;
+
+  modifier ownerOnly(){
+    require(msg.sender == owner);
+    _;
+  }
 
   constructor(){
     owner= payable(msg.sender);
@@ -19,16 +24,14 @@ contract Donation {
   function gatherDonation() public payable{
     require(msg.value >= .001 ether);
     donators.push(msg.sender);
-    donationForAddress[msg.sender].amount+=msg.value/(1e18);//msg value return wei, that is ether=1e18 wei so the value stored in ether
+    donationForAddress[msg.sender].amount+=msg.value;//msg value return wei, that is ether=1e18 wei so the value stored in wei
   }
 
-  function transferToOwner() external{
-    require(msg.sender == owner);
+  function transferToOwner() external ownerOnly{
     owner.transfer(address(this).balance);
   }
 
-  function transferToAddress(address  recevier) external{
-    require(msg.sender == owner);
+  function transferToAddress(address  recevier) external ownerOnly{
     payable(recevier).transfer(address(this).balance);
   }
 
