@@ -30,9 +30,41 @@ contract("Donation", (accounts) => {
       assert.equal(donationValue,donationValueForAddress,"the stored  donation value doesn't agree with the donation")
     });
 
-    it("restricts donaters from transfering the contract's balance to himself or another public address", async  ()=> {
-      
+    it("restricts donaters from transfering the contract's balance to himself", async  ()=> {
+      try {
+          await donationcontract.transferToOwner({from: new_Donater});
+          assert(false);
+        } catch (error) {
+          assert(error)
+      }
 
+    });
+    it("restricts donaters from transfering the contract's balance to  another public address", async  ()=> {
+      try {
+          await donationcontract.transferToAddress(accounts[2],{from: new_Donater});
+          assert(false);
+        } catch (error) {
+          assert(error)
+      }
+
+    });
+
+    it("allows owner to transfer the balance of the contract to himself", async  ()=> {
+      await donationcontract.transferToOwner({from: accounts[0]});
+      const balance =await web3.eth.getBalance(donationcontract.address);
+      assert.equal(0,balance,"balance hasn't transfered to owner")
+    });
+
+    it("accepts donation for the second time  and checking the balance of the contract", async  ()=> {
+      await donationcontract.gatherDonation({from:new_Donater, value: String(donationValue)});//donate with 1 ether
+      const balance =await web3.eth.getBalance(donationcontract.address);
+      assert.equal(donationValue,balance,'wrong balance')
+    });
+
+    it("allows owner to transfer the balance of the contract to public address", async  ()=> {
+      await donationcontract.transferToAddress(accounts[2],{from: accounts[0]});
+      const balance =await web3.eth.getBalance(donationcontract.address);
+      assert.equal(0,balance,"balance hasn't transfered to owner")
     });
 
 
