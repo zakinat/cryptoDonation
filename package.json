@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx hardhat test",
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat run scripts/deploy.js --network rinkeby"
   },
   "author": "zaki",
   "license": "ISC",
@@ -17,6 +19,7 @@
   },
   "devDependencies": {
     "@nomiclabs/hardhat-truffle5": "^2.0.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@nomiclabs/hardhat-web3": "^2.0.0",
     "chai-bignumber": "^3.0.0",
     "hardhat": "^2.8.0",

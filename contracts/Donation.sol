@@ -14,16 +14,12 @@ contract Donation {
   constructor(){
     owner= payable(msg.sender);
   }
-  //testing
-  modifier onlyOwener(){
-    require(owner==payable(msg.sender),"Not allowed");
-    _;
-  }
+  
 
   function gatherDonation() public payable{
     require(msg.value >= .001 ether);
     donators.push(msg.sender);
-    donationForAddress[msg.sender].amount+=msg.value/(1e18);//msg value return wei, that is ether=1e18 wei
+    donationForAddress[msg.sender].amount+=msg.value/(1e18);//msg value return wei, that is ether=1e18 wei so the value stored in ether
   }
 
   function transferToOwner() external{
@@ -38,6 +34,10 @@ contract Donation {
 
   function getDonators() public view returns (address[] memory){
     return donators;
+  }
+
+  function getDonationValueForAddress(address donater) public view returns (uint){
+    return donationForAddress[donater].amount;
   }
 
 }
