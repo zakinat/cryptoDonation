@@ -13,7 +13,7 @@ contract("Donation", (accounts) => {
       owner.should.be.bignumber.eql(accounts[0]);
     });
 
-    it("accept donation and save the address of the sender and save the value of donation in ether value for the sender address", async  ()=> {
+    it("accept donation and save the address of the sender and save the value of donation in ether value for the appropriate  sender address", async  ()=> {
       donationcontract=await Donation.deployed();
       let new_Donater=accounts[1];
       const donationValue=1;//1 ether
