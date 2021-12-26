@@ -1,0 +1,25 @@
+{
+  "name": "donation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zaki",
+  "license": "ISC",
+  "dependencies": {
+    "bignumber.js": "^9.0.2",
+    "chai": "^4.3.4"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-truffle5": "^2.0.3",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "chai-bignumber": "^3.0.0",
+    "hardhat": "^2.8.0",
+    "web3": "^1.6.1"
+  }
+}
