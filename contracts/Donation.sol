@@ -4,12 +4,12 @@ pragma solidity ^0.8.0;
 contract Donation {
 
   address payable public owner;
-  address[] public donators;
+  address[] private donators;
   //save the amount of every donation to the appropriate address of the sender
   struct DonaterInf{
     uint amount;
   }
-  mapping (address => DonaterInf ) public donationForAddress;
+  mapping (address => DonaterInf ) private donationForAddress;
 
   modifier ownerOnly(){
     require(msg.sender == owner);

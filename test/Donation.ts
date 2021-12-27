@@ -1,5 +1,5 @@
-import {ethers} from 'hardhat';
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
+import {ethers} from 'hardhat';
 import chai from "chai";
 const { expect } = chai;
 import assert from 'assert'
@@ -20,8 +20,9 @@ describe("Donation", () => {
 
     const donationValue=1;//1 ether 
 
-     it("Should check if the owner is who deployed the contract", async  ()=> {
+     it("Should check if the owner is who deployed the contract and the contract balance is 0", async  ()=> {
       expect(await  donation.owner()).to.equal(contract_owner.address);
+      expect(await ethers.provider.getBalance(donation.address)).to.equal(ethers.utils.parseEther(`${0}`));
     });
 
     it("accepts donation and checking the balance of the contract", async  ()=> {
