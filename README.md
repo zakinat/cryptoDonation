@@ -7,6 +7,9 @@ a deploying script was written to deploy the contract to rinkeby.infura network 
 
 
 # USAGE
+
+you need to rename the file (secretsExample.json) to (secrets.json) and fill it with yours values or leave it with empty values if you don't want to deploy but you must rename the file 
+
 for testing it localy 
 
 ```
@@ -22,7 +25,7 @@ truffle compile
 truffle migrate
 ```
 
-for deploying to the rinkeby.infura network you need to rename the file (secretsExample.json) to (secrets.json) and fill it with yours values
+for deploying to the rinkeby.infura network 
 
 ```
 npm i 
