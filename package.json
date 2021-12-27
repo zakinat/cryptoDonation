@@ -2,27 +2,38 @@
   "name": "donation",
   "version": "1.0.0",
   "description": "",
-  "main": "truffle-config.js",
-  "directories": {
-    "test": "test"
-  },
+  "main": "index.js",
   "scripts": {
-    "test": "npx hardhat test",
+    "clean": "npx hardhat clean",
     "compile": "npx hardhat compile",
-    "deploy": "npx hardhat run scripts/deploy.js --network rinkeby"
+    "chain": "npx hardhat node",
+    "deploy": "npx hardhat run --network localhost scripts/deploy.ts",
+    "deploy:rinkeby": "npx hardhat run --network rinkeby scripts/deploy.ts",
+    "test": "npx hardhat test"
   },
-  "author": "zaki",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zakinat/Donation_smartContract.git"
+  },
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bignumber.js": "^9.0.2",
-    "chai": "^4.3.4"
+  "bugs": {
+    "url": "https://github.com/zakinat/Donation_smartContract/issues"
   },
+  "homepage": "https://github.com/zakinat/Donation_smartContract#readme",
   "devDependencies": {
-    "@nomiclabs/hardhat-truffle5": "^2.0.3",
+    "@nomiclabs/hardhat-ethers": "^2.0.3",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
-    "@nomiclabs/hardhat-web3": "^2.0.0",
-    "chai-bignumber": "^3.0.0",
+    "@types/chai": "^4.3.0",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^17.0.5",
+    "chai": "^4.3.4",
+    "dotenv": "^10.0.0",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.5.2",
     "hardhat": "^2.8.0",
-    "web3": "^1.6.1"
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
   }
 }

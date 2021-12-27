@@ -2,11 +2,11 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\zaki\\def_crypto\\donation\\contracts\\Donation.sol": {
-      "lastModificationDate": 1640550464949,
-      "contentHash": "e8a3724e2dc3ebea5661c57d8db70a05",
+      "lastModificationDate": 1640605867378,
+      "contentHash": "03864577c739466c43bdf9bad77ed0e0",
       "sourceName": "contracts/Donation.sol",
       "solcConfig": {
-        "version": "0.8.10",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
             "enabled": false,
@@ -30,45 +30,10 @@
       },
       "imports": [],
       "versionPragmas": [
-        ">=0.4.22 <0.9.0"
+        "^0.8.0"
       ],
       "artifacts": [
         "Donation"
-      ]
-    },
-    "C:\\Users\\zaki\\def_crypto\\donation\\contracts\\Migrations.sol": {
-      "lastModificationDate": 1637393662806,
-      "contentHash": "50b3b1dc92806dc8f604fc8c5c65518f",
-      "sourceName": "contracts/Migrations.sol",
-      "solcConfig": {
-        "version": "0.8.10",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        ">=0.4.22 <0.9.0"
-      ],
-      "artifacts": [
-        "Migrations"
       ]
     }
   }
