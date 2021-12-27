@@ -1,4 +1,5 @@
 import '@nomiclabs/hardhat-waffle';
+import '@nomiclabs/hardhat-ethers';
 
 import * as dotenv from 'dotenv';
 import {  task } from 'hardhat/config';
@@ -17,6 +18,16 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     console.log(account.address);
   }
 });
+
+task("balance", "Prints an account's balance")
+  .addParam("account", "The account's address")
+  .setAction(async (taskArgs,hre) => {
+    const account =hre.ethers.utils.getAddress( taskArgs.account )
+    const balance =await hre.ethers.provider.getBalance(account);
+    console.log(hre.ethers.utils.formatEther(balance), "ETH");
+  });
+
+
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
