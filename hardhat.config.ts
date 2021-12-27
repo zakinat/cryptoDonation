@@ -43,10 +43,6 @@ const config: HardhatUserConfig = {
       chainId: 4,
       accounts: [`0x${DEPLOYER_PRIVATE_KEY}`],
     },
-    locallhost: {
-      url: `http://127.0.0.1:8545/`,
-      accounts: [`0x${DEPLOYER_PRIVATE_KEY}`],
-    },
   },
 };
 
