@@ -4,43 +4,61 @@ pragma solidity ^0.8.0;
 contract Donation {
 
   address payable public owner;
-  address[] private donators;
-  //save the amount of every donation to the appropriate address of the sender
-  struct DonaterInf{
-    uint amount;
-  }
-  mapping (address => DonaterInf ) private donationForAddress;
 
-  modifier ownerOnly(){
-    require(msg.sender == owner);
+  modifier ownerOnly()  {
+    require(msg.sender == owner, "Only the owner can make transfers");
     _;
   }
 
-  constructor(){
+  constructor() {
     owner= payable(msg.sender);
   }
   
 
-  function gatherDonation() public payable{
-    require(msg.value >= .001 ether);
-    donators.push(msg.sender);
-    donationForAddress[msg.sender].amount+=msg.value;//msg value return wei, that is ether=1e18 wei so the value stored in wei
+//save the addresses to a mapper
+  address[] private donators; 
+  mapping (address => bool) public Addresses;
+
+  function setAddress(address _address) public {
+        Addresses[_address]=true;
   }
 
-  function transferToOwner() external ownerOnly{
-    owner.transfer(address(this).balance);
+  function contains(address _address) public view returns (bool) {
+        return Addresses[_address];
   }
 
-  function transferToAddress(address  recevier) external ownerOnly{
-    payable(recevier).transfer(address(this).balance);
+  //save the amount of every donation to the appropriate sender address
+  mapping (address => uint256 ) private donationForAddress;
+
+
+  function gatherDonation() public payable {
+    require(msg.value >= .001 ether, "too small donation");
+    
+    if (!contains(msg.sender)) {
+      setAddress(msg.sender);
+      donators.push(msg.sender);
+    }
+
+    donationForAddress[msg.sender]+=msg.value;
   }
 
-  function getDonators() public view returns (address[] memory){
+
+  function transferToAddress(address  recevier, uint256 amount) external ownerOnly {
+    require(amount <= getBalance(), "there is not enough balance, to trasfer this amount");
+    payable(recevier).transfer(amount);
+  
+  }
+
+  function getDonators() public view returns (address[] memory) {
     return donators;
   }
 
-  function getDonationValueForAddress(address donater) public view returns (uint){
-    return donationForAddress[donater].amount;
+  function getDonationValueForAddress(address donater) public view returns (uint256) {
+    return donationForAddress[donater];
+  }
+
+  function getBalance() public view returns (uint256) {
+         return address(this).balance;
   }
 
 }

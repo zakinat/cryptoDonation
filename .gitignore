@@ -7,4 +7,6 @@ typechain
 
 #Hardhat files
 cache
+cache/
 artifacts
+artifacts/

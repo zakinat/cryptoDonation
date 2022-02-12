@@ -15,7 +15,7 @@ async function main() {
 
   // We get the contract to deploy
   const Donation = await ethers.getContractFactory('Donation');
-  const donation = await Donation.deploy('Hello, Hardhat!');
+  const donation = await Donation.deploy();
 
   await donation.deployed();
 

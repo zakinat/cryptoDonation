@@ -9,7 +9,9 @@
     "chain": "npx hardhat node",
     "deploy": "npx hardhat run --network localhost scripts/deploy.ts",
     "deploy:rinkeby": "npx hardhat run --network rinkeby scripts/deploy.ts",
-    "test": "npx hardhat test"
+    "task:rinkeby":"npx hardhat run --network rinkeby tasks/tasks.ts",
+    "test": "npx hardhat test",
+    "test-cov": "hardhat coverage"
   },
   "repository": {
     "type": "git",
@@ -33,6 +35,7 @@
     "ethereum-waffle": "^3.4.0",
     "ethers": "^5.5.2",
     "hardhat": "^2.8.0",
+    "solidity-coverage": "^0.7.19",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
   }
