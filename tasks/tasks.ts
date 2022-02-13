@@ -11,7 +11,7 @@ async function main () {
   const signer =await  new ethers.Wallet(`0x${process.env.DEPLOYER_PRIVATE_KEY}`, provider);
 
   const Donation = await ethers.getContractFactory("Donation");
-    const donation = await Donation.attach("0x331e428047c9b2DA5695E3265710a47955Fc19EB");
+    const donation = await Donation.attach("0x01804A4e70cAd7D7FC9878373edED2E8aAc62364");
 
     const contractSigner = donation.connect(signer);
 
@@ -19,7 +19,7 @@ async function main () {
 
     const donaters= await donation.getDonators()
     
-    console.log(donaters[0])
+    console.log(donaters)
 
     console.log(await donation.getDonationValueForAddress(donaters[0]))
 
